@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "Dekevich_diff_calculator"
+name = "Dekevich_gendiff"
 version = "0.1.0"
 description = "diff calculator"
 authors = ["Denis Dekevich <da.dekevich@gmail.com>"]
 packages = [
-    { include = "diff_calculator" },
+    { include = "gendiff" },
 ]
 
 [tool.poetry.scripts]
-gendiff = "diff_calculator.scripts.gendiff:main"
+gendiff = "gendiff.scripts.gendiff:main"
 
 [tool.poetry.dependencies]
 python = "^3.8"
