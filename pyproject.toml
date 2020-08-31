@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "Dekevich_diff_calculator"
+version = "0.1.0"
+description = "diff calculator"
+authors = ["Denis Dekevich <da.dekevich@gmail.com>"]
+packages = [
+    { include = "diff_calculator" },
+]
+
+[tool.poetry.scripts]
+gendiff = "diff_calculator.scripts.gendiff:main"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+
+
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
