@@ -12,7 +12,6 @@ gendiff = "gendiff.scripts.gendiff:main"
 
 [tool.poetry.dependencies]
 python = "^3.6"
-importlib-metadata = {python = "<3.8"}
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.8.3"
