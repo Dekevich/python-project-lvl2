@@ -2,32 +2,27 @@ import argparse
 import json
 
 
-def generate_diff(file1, file2):
-    with open(file1) as f:
-        file1_data = json.load(f)
+def generate_diff(file_path_1, file_path_2):
+    with open(file_path_1) as file:
+        file1_data = json.load(file)
 
-    with open(file2) as f:
-        file2_data = json.load(f)
+    with open(file_path_2) as file:
+        file2_data = json.load(file)
 
     result = []
 
-    for key in file1_data.keys() - file2_data.keys():
-        result.append(f'- {key}: {file1_data[key]}')
-
-    for key in file2_data.keys() - file1_data.keys():
-        result.append(f'+ {key}: {file2_data[key]}')
-
-    for key in file1_data.keys() & file2_data.keys():
-        file1_value = file1_data[key]
-        file2_value = file2_data[key]
-
-        if file1_value == file2_value:
-            result.append(f'  {key}: {file1_value}')
+    for key in sorted(file1_data.keys() | file2_data.keys()):
+        if key in file1_data and key not in file2_data:
+            result.append(f'- {key}: {file1_data[key]}')
+        elif key in file2_data and key not in file1_data:
+            result.append(f'+ {key}: {file2_data[key]}')
+        elif file1_data[key] == file2_data[key]:
+            result.append(f'  {key}: {file1_data[key]}')
         else:
-            result.append(f'- {key}: {file1_value}')
-            result.append(f'+ {key}: {file2_value}')
+            result.append(f'- {key}: {file1_data[key]}')
+            result.append(f'+ {key}: {file2_data[key]}')
 
-    return '{\n\t' + '\n\t'.join(result) + '\n}'
+    return '{\n  ' + '\n  '.join(result) + '\n}'
 
 
 def main():
@@ -37,7 +32,6 @@ def main():
     parser.add_argument('-f', '--format', help='set format of output')
 
     args = parser.parse_args()
-
     print(generate_diff(args.first_file, args.second_file))
 
 
