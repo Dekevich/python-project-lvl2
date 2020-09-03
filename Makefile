@@ -6,7 +6,9 @@ lint:
 
 test:
 	#poetry run pytest --cov==gendiff
-	poetry run coverage run -m pytest
+	poetry run coverage run --source=gendiff -m pytest
+	poetry run coverage xml
+
 
 publish: lint test
 	@poetry publish -r test_pypi --build
