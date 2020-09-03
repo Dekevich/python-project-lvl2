@@ -12,11 +12,11 @@ gendiff = "gendiff.scripts.gendiff:main"
 
 [tool.poetry.dependencies]
 python = "^3.6"
+coverage = "^5.2.1"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.8.3"
 pytest = "^6.0.1"
-pytest-cov = "^2.10.1"
 
 
 [build-system]
