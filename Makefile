@@ -4,5 +4,8 @@ install:
 lint:
 	poetry run flake8 gendiff
 
-publish: lint
+test:
+	poetry run pytest
+
+publish: lint test
 	@poetry publish -r test_pypi --build
