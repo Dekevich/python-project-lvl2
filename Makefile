@@ -5,8 +5,8 @@ lint:
 	poetry run flake8 gendiff
 
 test:
-	coverage run --source=gendiff -m pytest -vv
-	coverage xml
+	poetry run coverage run --source=gendiff -m pytest -vv
+	poetry run coverage xml
 
 publish: lint test
 	@poetry publish -r test_pypi --build
