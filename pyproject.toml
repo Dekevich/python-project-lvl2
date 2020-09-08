@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "Dekevich_gendiff"
-version = "0.4.0"
+version = "0.5.0"
 description = "diff calculator"
 authors = ["Denis Dekevich <da.dekevich@gmail.com>"]
 packages = [
