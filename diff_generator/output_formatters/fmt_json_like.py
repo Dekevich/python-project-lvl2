@@ -2,13 +2,13 @@ import json
 import re
 
 
-def format_as_json_like(diff, indent=2):
-    def inner(diff):
+def format_as_json_like(diff, indent=4):
+    def _format(diff):
         result = {}
         for key, key_data in sorted(diff.items()):
             status = key_data.get('status')
             if not status:
-                result[f'{key}'] = inner(key_data)
+                result[f'{key}'] = _format(key_data)
             else:
                 result.update(
                     {fkey: fvalue for fkey, fvalue
@@ -17,8 +17,7 @@ def format_as_json_like(diff, indent=2):
 
         return result
 
-    output = json.dumps(inner(diff), indent=4)
-    # return output
+    output = json.dumps(_format(diff), indent=indent)
     return re.sub('[,"]', '', output)
 
 

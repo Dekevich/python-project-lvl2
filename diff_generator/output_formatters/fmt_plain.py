@@ -1,13 +1,13 @@
 def format_as_plain_text(diff):
     full_key_path = []
 
-    def inner(diff):
+    def _format(diff):
         result = []
         for key, key_data in diff.items():
             full_key_path.append(key)
             status = key_data.get('status')
             if not status:
-                result.extend(inner(key_data))
+                result.extend(_format(key_data))
             elif status != 'unmodified':
 
                 result.append(
@@ -16,7 +16,7 @@ def format_as_plain_text(diff):
             full_key_path.pop()
         return result
 
-    return '\n'.join(sorted(inner(diff)))
+    return '\n'.join(sorted(_format(diff)))
 
 
 def generate_output_line(key_data, key_path):
