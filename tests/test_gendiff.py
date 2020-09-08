@@ -1,6 +1,6 @@
 import pytest
 
-from diff_generator.scripts.gendiff import generate_formatted_diff
+from diff_generator.gendiff import generate_formatted_diff
 
 FLAT_JSON_1 = './tests/fixtures/flat_file_1.json'
 FLAT_JSON_2 = './tests/fixtures/flat_file_2.json'

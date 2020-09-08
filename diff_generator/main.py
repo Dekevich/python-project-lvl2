@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-from .scripts.gendiff import generate_formatted_diff
+from diff_generator.gendiff import generate_formatted_diff
 
 
 def parse_args(args):
